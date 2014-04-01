@@ -8,7 +8,8 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITextField *characterNameTextField;
 
 @end
 
@@ -26,15 +27,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 1;
 }
 
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"LostCharactersReuseID"];
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
